@@ -71,8 +71,9 @@ export default function Home() {
     } else {
       clearInterval(IntervalId);
       let accuracy = ((words - wrongTyped) / words) * 100;
-      let new_accuracy = Math.round((accuracy + Number.EPSILON) * 100) / 100
-      router.push(`/performance?WPM=${wpm}&ACCURACY=${new_accuracy}`);
+      let new_accuracy = Math.round((accuracy + Number.EPSILON) * 100) / 100;
+      console.log(new_accuracy);
+      // router.push(`/performance?WPM=${wpm}&ACCURACY=${new_accuracy}`);
     }
 
     return () => clearInterval(IntervalId);
