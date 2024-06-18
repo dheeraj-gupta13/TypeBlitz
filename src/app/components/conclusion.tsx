@@ -22,7 +22,15 @@ ChartJS.register(
   Legend
 );
 
-const LineChartComponent = ({ label, cdata }: any) => {
+interface LineChartComponentProps {
+  label: string[];
+  cdata: number[];
+}
+
+const LineChartComponent: React.FC<LineChartComponentProps> = ({
+  label,
+  cdata,
+}: any) => {
   const data = {
     labels: label,
     datasets: [
@@ -57,7 +65,7 @@ const LineChartComponent = ({ label, cdata }: any) => {
     },
   };
 
-  return <Line data={data} options={options} height={350} width={800} />;
+  return <Line data={data} height={350} width={800} />;
 };
 
 export default function Conclusion({ wpm, secArr, wpmArr }: any) {
@@ -81,7 +89,7 @@ export default function Conclusion({ wpm, secArr, wpmArr }: any) {
         </div>
       </div>
       <div>
-        <LineChartComponent className="w-100" label={secArr} cdata={wpmArr} />
+        <LineChartComponent label={secArr} cdata={wpmArr} />
       </div>
     </div>
   );

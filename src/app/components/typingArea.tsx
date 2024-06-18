@@ -10,8 +10,8 @@ import Conclusion from "./conclusion";
 
 // const TotalTime = 30;
 
-let wpmArr = [];
-let secArr = [];
+let wpmArr: any = [];
+let secArr: any = [];
 
 export default function TypingArea({
   timerStarted,
@@ -70,7 +70,7 @@ export default function TypingArea({
       IntervalId = setInterval(() => {
         const timeSpend = TotalTime - timeRemaining;
         const wpm = timeSpend > 0 ? (words / 5 / timeSpend) * 60.0 : 0;
-        setTimeRemaining((timeRemaining) => timeRemaining - 1);
+        setTimeRemaining((timeRemaining: any) => timeRemaining - 1);
         setWpm(Math.round(wpm));
 
         wpmArr.push(wpm);
