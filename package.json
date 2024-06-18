@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "chart.js": "^4.4.3",
     "next": "latest",
     "plotly.js": "^2.26.1",
     "react": "latest",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "latest",
     "react-icons": "^4.11.0",
     "react-plotly.js": "^2.6.0"
