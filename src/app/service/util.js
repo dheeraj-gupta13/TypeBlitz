@@ -8,9 +8,16 @@ function base64urlDecode(str) {
   return atob(str);
 }
 
+// export function getCurrentUserToken() {
+//   const token = localStorage.getItem("token");
+//   return token;
+// }
 export function getCurrentUserToken() {
-  const token = localStorage.getItem("token");
-  return token;
+  if (typeof window !== "undefined" && typeof localStorage !== "undefined") {
+    const token = localStorage.getItem("token");
+    return token;
+  }
+  return null; // Or handle the case when localStorage is not available
 }
 
 export function decodeJwt(token) {
