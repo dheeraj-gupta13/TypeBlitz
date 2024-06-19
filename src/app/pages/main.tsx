@@ -8,8 +8,9 @@ import { CiDesktopMouse1, CiCircleRemove } from "react-icons/ci";
 import { BiSolidKeyboard } from "react-icons/bi";
 import TypingArea from "../components/typingArea";
 import Conclusion from "../components/conclusion";
+import Header from "../components/header";
 
-const TotalTime = 15;
+const TotalTime = 5;
 
 export default function Editor() {
   const router = useRouter();
@@ -84,17 +85,8 @@ export default function Editor() {
   return (
     <div>
       {/* Header */}
-      <div className="flex justify-center items-center mt-8">
-        <div
-          className={`${fontFamily}  text-white text-5xl tracking-wider mr-2`}
-        >
-          TypeBlitz
-        </div>
-        <div>
-          {" "}
-          <BiSolidKeyboard className="text-blue-500 text-5xl" />{" "}
-        </div>
-      </div>
+
+      <Header fontFamily={fontFamily} />
 
       <TypingArea
         timerStarted={timerStarted}

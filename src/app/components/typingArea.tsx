@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { SAMPLE_PARAGRAPHS } from "../../app/para/data";
 import { FiRefreshCcw } from "react-icons/fi";
@@ -32,6 +32,14 @@ export default function TypingArea({
   const [fontFamily, setFontFamily] = useState("font-mono");
   const [fontFamilyOpen, setFontFamilyOpen] = useState(false);
   const [wrongTyped, setWrongTyped] = useState(0);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    // Autofocus the textarea when the component mounts
+    if (textareaRef.current) {
+      textareaRef.current.focus();
+    }
+  }, []);
 
   const fetchNewPara = () => {
     let idx = Math.floor(Math.random() * 10);
@@ -95,7 +103,13 @@ export default function TypingArea({
   return (
     <div>
       {timeRemaining == 0 ? (
-        <Conclusion wpm={wpm} wpmArr={wpmArr} secArr={secArr} />
+        <Conclusion
+          wpm={wpm}
+          words={words}
+          wrongTyped={wrongTyped}
+          wpmArr={wpmArr}
+          secArr={secArr}
+        />
       ) : (
         <div>
           <div className="flex justify-between text-2xl mr-20 ml-10 mt-10 ">
@@ -112,6 +126,7 @@ export default function TypingArea({
             </div>
 
             <textarea
+              ref={textareaRef} // Attach the ref to the textarea
               value={userInput}
               onKeyDown={(e) => handleClick(e)}
               className={`${fontFamily} non-blinking-cursor tracking-wide bg-gray-900 absolute top-40 bg-sky-500/[0.01] border-none text-white  w-11/12 h-80 ml-10 resize-none`}
