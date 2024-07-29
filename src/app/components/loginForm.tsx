@@ -63,7 +63,7 @@ export default function LoginForm({ setIsRegisterPageVisible }: any) {
         />
       </div>
       <button className="px-6 py-2 rounded-sm bg-blue-500 text-white" type="submit">SUBMIT</button>
-      <p className="text-white text-sm text-center">Don't have an account?  <span className="cursor-pointer text-blue-600" onClick={() => setIsRegisterPageVisible(true)}>Sign In</span></p>
+      <p className="text-white text-sm text-center">Don&apos;t have an account?  <span className="cursor-pointer text-blue-600" onClick={() => setIsRegisterPageVisible(true)}>Sign In</span></p>
     </form>
   );
 }
