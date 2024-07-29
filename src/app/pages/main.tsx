@@ -14,7 +14,6 @@ export default function Editor() {
   return (
     <div>
       <Header fontFamily={fontFamily} />
-
       <TypingArea
         timerStarted={timerStarted}
         setTimerStarted={setTimerStarted}

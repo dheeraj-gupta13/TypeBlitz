@@ -24,8 +24,7 @@ export default function TypingArea({
 
   const [userInput, setUserInput] = useState("");
   const [text, setText] = useState("Loading...");
-  //   const [timeRemaining, setTimeRemaining] = useState(TotalTime);
-  //   const [timerStarted, setTimerStarted] = useState(false);
+
   const [index, setIndex] = useState(0);
   const [wpm, setWpm] = useState(0);
   const [words, setWords] = useState(0);
@@ -89,7 +88,6 @@ export default function TypingArea({
       let accuracy = ((words - wrongTyped) / words) * 100;
       let new_accuracy = Math.round((accuracy + Number.EPSILON) * 100) / 100;
       console.log(new_accuracy);
-      // router.push(`/performance?WPM=${wpm}&ACCURACY=${new_accuracy}`);
     }
 
     return () => clearInterval(IntervalId);
@@ -113,8 +111,8 @@ export default function TypingArea({
       ) : (
         <div>
           <div className="flex justify-between text-2xl mr-20 ml-10 mt-10 ">
-            <div className=" text-white">{timerStarted && timeRemaining} </div>
-            <div className="text-white">wpm : {wpm}</div>
+            <p className=" text-white">{timerStarted && timeRemaining} </p>
+            <p className="text-white">wpm : {wpm}</p>
           </div>
 
           {/* Typing Area */}

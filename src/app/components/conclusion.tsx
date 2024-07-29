@@ -121,38 +121,39 @@ export default function Conclusion({
   }, []);
 
   return (
-    <>
-      <div className="text-gray-500 p-20 flex gap-20 items-center">
+    <div className="h-screen overflow-hidden text-gray-500 p-10 flex flex-col items-center">
+    <div className="flex flex-col md:flex-row gap-10 items-center">
+      <div className="flex flex-col gap-5">
         <div>
-          <div>
-            <p className="text-2xl">wpm</p>
-            <p className="text-6xl font-semibold">{wpm}</p>
-          </div>
-          <div>
-            <p className="text-2xl">acc</p>
-            <p className="text-6xl font-semibold">{accuracy}%</p>
-          </div>
-          <div>
-            <p className="text-2xl">time</p>
-            <p className="text-6xl font-semibold">{15}s</p>
-          </div>
+          <p className="text-2xl">WPM</p>
+          <p className="text-6xl font-semibold">{wpm}</p>
         </div>
         <div>
-          <LineChartComponent label={secArr} cdata={wpmArr} />
+          <p className="text-2xl">Accuracy</p>
+          <p className="text-6xl font-semibold">{accuracy}%</p>
+        </div>
+        <div>
+          <p className="text-2xl">Time</p>
+          <p className="text-6xl font-semibold">15s</p>
         </div>
       </div>
-      <div className="text-white flex justify-center">
-        {!maxWpm ? (
-          <p>
-            <Link className="underline" href="/login">
-              Sign in
-            </Link>{" "}
-            to save your responses
-          </p>
-        ) : (
-          <p>Max Speed : {maxWpm}</p>
-        )}
+      <div className="w-full md:w-auto">
+        <LineChartComponent label={secArr} cdata={wpmArr} />
       </div>
-    </>
+    </div>
+    <div className="text-white flex justify-center mt-10">
+      {!maxWpm ? (
+        <p>
+          <Link className="text-blue-600" href="/login">
+            Log in
+          </Link>{" "}
+          to save your responses
+        </p>
+      ) : (
+        <p>Max Speed: {maxWpm}</p>
+      )}
+    </div>
+  </div>
+
   );
 }

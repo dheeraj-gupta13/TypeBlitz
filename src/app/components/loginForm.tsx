@@ -5,10 +5,9 @@ import { loginApi } from "../service/api";
 import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
 
-export default function LoginForm({ fontFamily }: any) {
+export default function LoginForm({ setIsRegisterPageVisible }: any) {
   const [formData, setFormData] = useState({
     username: "",
-    email: "",
     password: "",
   });
   const router = useRouter();
@@ -23,9 +22,7 @@ export default function LoginForm({ fontFamily }: any) {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    // console.log("Form submitted:", formData);
-
-    const userData = {
+    const userData = { 
       username: formData.username,
       password: formData.password,
     };
@@ -40,7 +37,7 @@ export default function LoginForm({ fontFamily }: any) {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-      <div>Log in</div>
+        <p className="text-white text-center">LOG IN</p>
       <div>
         <label htmlFor="username"></label>
         <input
@@ -49,20 +46,8 @@ export default function LoginForm({ fontFamily }: any) {
           name="username"
           value={formData.username}
           onChange={handleChange}
-          className="px-6 py-1 rounded-md text-black"
+          className="px-6 py-2 w-[250px]  rounded-sm text-black"
           placeholder="Username"
-        />
-      </div>
-      <div>
-        <label htmlFor="email"></label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          className="px-6 py-1 rounded-md text-black"
-          placeholder="Email"
         />
       </div>
       <div>
@@ -73,11 +58,12 @@ export default function LoginForm({ fontFamily }: any) {
           name="password"
           value={formData.password}
           onChange={handleChange}
-          className="px-6 py-1 rounded-md text-black"
+          className="px-6 py-2 w-[250px]  rounded-sm text-black"
           placeholder="Password"
         />
       </div>
-      <button type="submit">Submit</button>
+      <button className="px-6 py-2 rounded-sm bg-blue-500 text-white" type="submit">SUBMIT</button>
+      <p className="text-white text-sm text-center">Don't have an account?  <span className="cursor-pointer text-blue-600" onClick={() => setIsRegisterPageVisible(true)}>Sign In</span></p>
     </form>
   );
 }

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { registerUserApi } from "../service/api";
 
-export default function RegisterForm({ fontFamily }: any) {
+export default function RegisterForm({ setIsRegisterPageVisible }: any) {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -20,7 +20,7 @@ export default function RegisterForm({ fontFamily }: any) {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    // console.log("Form submitted:", formData);
+
 
     const userData = {
       username: formData.username,
@@ -33,7 +33,7 @@ export default function RegisterForm({ fontFamily }: any) {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-      <div>Register</div>
+      <p className="text-white text-center">REGISTER</p>
       <div>
         <label htmlFor="username"></label>
         <input
@@ -42,7 +42,7 @@ export default function RegisterForm({ fontFamily }: any) {
           name="username"
           value={formData.username}
           onChange={handleChange}
-          className="px-6 py-1 rounded-md text-black"
+          className="px-6 py-2 w-[250px] rounded-sm text-black"
           placeholder="Username"
         />
       </div>
@@ -54,7 +54,7 @@ export default function RegisterForm({ fontFamily }: any) {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          className="px-6 py-1 rounded-md text-black"
+          className="px-6 py-2 w-[250px] rounded-sm text-black"
           placeholder="Email"
         />
       </div>
@@ -66,11 +66,12 @@ export default function RegisterForm({ fontFamily }: any) {
           name="password"
           value={formData.password}
           onChange={handleChange}
-          className="px-6 py-1 rounded-md text-black"
+          className="px-6 py-2 w-[250px]  rounded-sm text-black"
           placeholder="Password"
         />
       </div>
-      <button type="submit">Submit</button>
+      <button className="px-6 py-2 rounded-sm bg-blue-500 text-white" type="submit">CREATE</button>
+      <p className="text-white text-sm text-center">Already have an account?  <span className="cursor-pointer text-blue-600" onClick={() => setIsRegisterPageVisible(false)}>Log In</span></p>
     </form>
   );
 }
