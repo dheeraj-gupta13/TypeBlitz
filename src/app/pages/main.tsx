@@ -4,7 +4,7 @@ import { useState } from "react";
 import TypingArea from "../components/typingArea";
 import Header from "../components/header";
 
-const TotalTime = 5;
+const TotalTime = 15;
 
 export default function Editor() {
   const [timeRemaining, setTimeRemaining] = useState(TotalTime);
